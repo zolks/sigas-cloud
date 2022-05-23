@@ -2,19 +2,19 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: customer
+    app: sigas
     version: v1
-  name: customer
+  name: sigas
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: customer
+      app: sigas
       version: v1
   template:
     metadata:
       labels:
-        app: customer
+        app: sigas
         version: v1
       annotations:
         sidecar.istio.io/inject: "true"
@@ -23,8 +23,8 @@ spec:
       - env:
         - name: JAVA_OPTIONS
           value: -Xms15m -Xmx15m -Xmn15m
-        name: customer
-        image: quay.io/rhdevelopers/istio-tutorial-customer:v1
+        name: sigas
+        image: sixbell/sigas-cloud:v1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
